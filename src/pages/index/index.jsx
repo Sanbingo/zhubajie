@@ -3,21 +3,42 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Image, Text } from '@tarojs/components'
 import './index.less'
 
+const TITLE = '焦虑自评量表'
+const PEOPLE = '22.5万人在测'
+const DESCRIPTION = '没错，我们处于“全民焦虑”的年代。适度水平的焦虑唤醒我们的神经，让我们保持生活的活力。但是焦虑过度了则会影响我们的生活质量。想了解近一个星期你的焦虑水平如何？就让焦虑自评量表（SAS）告诉你吧！'
+
 export default class Index extends Component {
 
   config = {
     navigationBarTitleText: '心里测试'
   }
+  // 判断宿主环境，只有抖音APP才支持播放激励视频
+  componentWillMount() {
+    const res = Taro.getSystemInfoSync()
+    const { platform, version, appName } = res || {};
+    const MinAndroidVersion = 10.3
+    const MinIosVersion = 10.7
+    let canUseAwardAd = false
+    if (appName && appName.toUpperCase() === 'DOUYIN') {
+      if (platform.toUpperCase() === 'IOS' && parseFloat(version) > MinIosVersion) {
+        canUseAwardAd = true
+      } else if (platform.toUpperCase() === 'ANDROID' && parseFloat(version) > MinAndroidVersion) {
+        canUseAwardAd = true
+      } else {
+        canUseAwardAd = false
+      }
+    }
+    Taro.setStorageSync('canUseAwardAd', canUseAwardAd)
 
-  componentWillMount () { }
+  }
 
-  componentDidMount () { }
+  componentDidMount() { }
 
-  componentWillUnmount () { }
+  componentWillUnmount() { }
 
-  componentDidShow () { }
+  componentDidShow() { }
 
-  componentDidHide () { }
+  componentDidHide() { }
 
   goToQuestions = () => {
     Taro.navigateTo({
@@ -25,19 +46,19 @@ export default class Index extends Component {
     })
   }
 
-  render () {
+  render() {
     return (
       <View className='index'>
-        <Image src='https://tva1.sinaimg.cn/large/007S8ZIlgy1gfnod6gxb2j316m0s4hdu.jpg' />
-        <View className='app-container'> 
-          <View className='app-container__name'>你的情商有多高？</View>
-          <View className='app-container__count'> 252.万人在测</View>
-          <View className='app-container__desc'>情商（Emotional Quotient）通常是指情绪商数，简称EQ，主要是指人在情绪、意志、耐受挫折等方面的品质，其包括导商（LQ）等。它是近年来心理学家们提出的与智商相对应的概念。从最简单的层次上下定义，提高情商的基础是培养自我意识，从而增强理解自己及表达自己的能力。总的来讲，人与人之间的情商并无明显的先天差别，更多与后天的培养息息相关。</View>
+        <Image src='https://tva1.sinaimg.cn/large/007S8ZIlgy1gg8icw24s9j30q00f01kx.jpg' />
+        <View className='app-container'>
+          <View className='app-container__name'>{TITLE}</View>
+          <View className='app-container__count'>{PEOPLE}</View>
+          <View className='app-container__desc'>{DESCRIPTION}</View>
           <View className='app-container__test'>
             <Text className='app-container__test-btn' onClick={this.goToQuestions}>开始测试</Text>
           </View>
         </View>
-        
+
       </View>
     )
   }
