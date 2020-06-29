@@ -2,7 +2,11 @@
   "miniprogramRoot": "./dist",
   "projectname": "zhubajie",
   "description": "zhubajie",
+<<<<<<< HEAD
   "appid": "tt6f1f19a2f0255581",
+=======
+  "appid": "ttf67b80c66951ab30",
+>>>>>>> a526a6a720074a51ce74e1eebbc27d27f9d5082f
   "setting": {
     "urlCheck": true,
     "es6": false,
