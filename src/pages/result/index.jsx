@@ -110,7 +110,7 @@ export default class Index extends Component {
             {this.state.showResult || !canUseAwardAd ? this.renderResults() : this.renderAds()}
           </View>
         </View>
-
+        <View className='bottom-tips'>--仅供娱乐参考--</View>
       </View>
     )
   }

@@ -5,7 +5,7 @@ import { View } from '@tarojs/components'
 import './index.less'
 
 const NEXT_TIMEOUT = 300
-const ANSWER_LIST = [{ key: 'A', value: '没有或很少时间有' }, { key: 'B', value: '小部分时间有' }, { key: 'C', value: '相当多时间有' }, { key: 'D', value: '绝大部分或全部时间有' }]
+const ANSWER_LIST = [{ key: 'A', value: '没有或很少时间有' }, { key: 'B', value: '小部分时间有' }, { key: 'C', value: '较多时间有' }, { key: 'D', value: '绝大部分或全部时间有' }]
 const SCORE_MAP = {
     'A': 2,
     'B': 3,
@@ -34,16 +34,16 @@ export default class Index extends Component {
                 question: '我容易心里烦乱或觉得惊恐',
                 answer: ANSWER_LIST
             }, {
-                question: '我觉得我可能将要发疯',
+                question: '觉得自己可能会发疯',
                 answer: ANSWER_LIST
             }, {
                 question: '我觉得一切都很好，也不会发生什么不幸',
                 answer: ANSWER_LIST
             }, {
-                question: '我手脚发抖打颤',
+                question: '手脚发抖打颤',
                 answer: ANSWER_LIST
             }, {
-                question: '我因为头疼、头颈痛和背痛而苦恼',
+                question: '我会因为头疼、颈痛而烦恼',
                 answer: ANSWER_LIST
             }, {
                 question: '我感到容易衰弱和疲乏',
@@ -58,13 +58,13 @@ export default class Index extends Component {
                 question: '我因为一阵阵头晕而苦恼',
                 answer: ANSWER_LIST
             }, {
-                question: '我有晕倒发作或觉得要晕倒似的',
+                question: '我会有晕倒或觉得要晕倒的情况',
                 answer: ANSWER_LIST
             }, {
                 question: '我呼气、吸气都感到很容易',
                 answer: ANSWER_LIST
             }, {
-                question: '我手脚麻木和刺痛',
+                question: '手脚麻木刺痛',
                 answer: ANSWER_LIST
             }, {
                 question: '我因为胃痛和消化不良而苦恼',
@@ -126,19 +126,22 @@ export default class Index extends Component {
         const { question, answer } = questionList[currentIndex]
         const totalQuestions = questionList.length;
         return (
-            <View className='index'>
-                <View className='info-bar'>
-                    <View className='info-bar__index'>{currentIndex + 1}/{totalQuestions}</View>
-                    <View className='info-bar__count'>{PEOPLE}</View>
-                </View>
-                <View>
-                    <View className='question-desc'>
-                        {question}
+            <View>
+                <View className='index'>
+                    <View className='info-bar'>
+                        <View className='info-bar__index'>{currentIndex + 1}/{totalQuestions}</View>
+                        <View className='info-bar__count'>{PEOPLE}</View>
                     </View>
-                    <View className='answer-options'>
-                        {answer.map((item, index) => <View key={index} className={`answer-options-item ${index === hoverIndex ? 'active-bar' : ''}`} onClick={this.handleClick(index, item.key)}>{item.key}. {item.value}</View>)}
+                    <View>
+                        <View className='question-desc'>
+                            {question}
+                        </View>
+                        <View className='answer-options'>
+                            {answer.map((item, index) => <View key={index} className={`answer-options-item ${index === hoverIndex ? 'active-bar' : ''}`} onClick={this.handleClick(index, item.key)}>{item.key}. {item.value}</View>)}
+                        </View>
                     </View>
                 </View>
+                <View className='bottom-tips'>--仅供娱乐参考--</View>
             </View>
         )
     }

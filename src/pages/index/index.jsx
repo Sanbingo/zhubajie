@@ -5,12 +5,12 @@ import './index.less'
 
 const TITLE = '焦虑自评量表'
 const PEOPLE = '22.5万人在测'
-const DESCRIPTION = '没错，我们处于“全民焦虑”的年代。适度水平的焦虑唤醒我们的神经，让我们保持生活的活力。但是焦虑过度了则会影响我们的生活质量。想了解近一个星期你的焦虑水平如何？就让焦虑自评量表（SAS）告诉你吧！'
+const DESCRIPTION = '没错，我们处于“全民焦虑”的年代。适度的焦虑会唤醒我们的神经，让我们保持生活的活力。但是焦虑过度则会影响我们的生活质量。想了解近一个星期你的焦虑水平如何吗？就让焦虑自评量表（SAS）告诉你吧！'
 
 export default class Index extends Component {
 
   config = {
-    navigationBarTitleText: '心里测试'
+    navigationBarTitleText: '心理测试'
   }
   // 判断宿主环境，只有抖音APP才支持播放激励视频
   componentWillMount() {
@@ -58,7 +58,7 @@ export default class Index extends Component {
             <Text className='app-container__test-btn' onClick={this.goToQuestions}>开始测试</Text>
           </View>
         </View>
-
+        <View className='bottom-tips'>--仅供娱乐参考--</View>
       </View>
     )
   }
