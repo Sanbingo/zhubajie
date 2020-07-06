@@ -10,7 +10,7 @@ const DESCRIPTION = '没错，我们处于“全民焦虑”的年代。适度�
 export default class Index extends Component {
 
   config = {
-    navigationBarTitleText: '进入测试'
+    navigationBarTitleText: ''
   }
   // 判断宿主环境，只有抖音APP才支持播放激励视频
   componentWillMount() {
